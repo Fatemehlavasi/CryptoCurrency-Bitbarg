@@ -1,0 +1,14 @@
+
+*{
+  direction: rtl;
+
+}
+a{
+  text-decoration: none;
+  list-style-type: none;
+}
+@font-face {
+    font-family: "IRANSANS";  
+    src: 
+      url("./assets/fonts/FontsFree-Net-ir_sans.ttf") format("woff");
+  }
