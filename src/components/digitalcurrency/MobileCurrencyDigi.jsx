@@ -8,7 +8,8 @@ import IconButton from "@mui/material/IconButton";
 
 const MobileCurrencyDigi = ({ coin, handelCheck }) => {
     return (
-        <TableRow hover role="checkbox" tabIndex={-1} >
+
+        <TableRow hover role="checkbox" >
             <TableCell sx={{ textAlign: "center" }}>
                 <IconButton onClick={() => handelCheck(coin.uuid)}>
                     <h3>{coin.lVolume ? <StarIcon sx={{ Color: "red" }} /> : <StarBorderIcon />}</h3>
@@ -16,7 +17,7 @@ const MobileCurrencyDigi = ({ coin, handelCheck }) => {
             </TableCell>
 
             <TableCell sx={{ textAlign: "center" }} paddingLeft={0}>
-                <Grid display={"flex"} alignItems={'center'} justifyContent={"flex-end"} >
+                {/* <Grid display={"flex"} alignItems={'center'} justifyContent={"flex-end"} >
                     <Typography
                         variant="subtitle1"
                         color={"rgba(0, 0, 0, 0.6)"}
@@ -33,8 +34,8 @@ const MobileCurrencyDigi = ({ coin, handelCheck }) => {
                         px={1}
                     >
                     </Typography>
-                </Grid>
-                <Grid display={"flex"} justifyContent={"flex-end"} >
+                </Grid> */}
+                {/* <Grid display={"flex"} justifyContent={"flex-end"} >
                     <Typography
                         variant="subtitle1"
                         color={"rgba(0, 0, 0, 0.6)"}
@@ -54,7 +55,7 @@ const MobileCurrencyDigi = ({ coin, handelCheck }) => {
                     </Typography>
 
 
-                </Grid>
+                </Grid> */}
             </TableCell>
             <TableCell sx={{ textAlign: "left" }}>
                 <Grid display={"flex"} justifyContent={"flex-end"}>

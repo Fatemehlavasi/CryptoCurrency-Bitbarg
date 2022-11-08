@@ -6,9 +6,9 @@ import DesDigital from './DesDigital';
 import { Grid, IconButton, Typography, Button } from "@mui/material"
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
-const TableِPricDigi = ({ coin , handelCheck }) => {
+const TableِPricDigi = ({ coin, handelCheck }) => {
 
-   
+
     return (
 
         <>
@@ -18,7 +18,7 @@ const TableِPricDigi = ({ coin , handelCheck }) => {
             >
                 <TableCell sx={{ textAlign: "center" }}>
                     <IconButton onClick={() => handelCheck(coin.uuid)}>
-                        <h3>{coin.lVolume ? <StarIcon sx={{ Color: "red" }} /> : <StarBorderIcon />}</h3>
+                        <h3>{coin.lVolume ? <StarIcon /> : <StarBorderIcon />}</h3>
                     </IconButton>
                 </TableCell>
                 <TableCell sx={{ textAlign: "center" }}>{`${coin.change}%`}</TableCell>
@@ -49,7 +49,7 @@ const TableِPricDigi = ({ coin , handelCheck }) => {
                                             mr: 1,
                                             borderRadius: 1,
                                         }}
-                                     >
+                                    >
                                         {coin.rank}
                                     </Typography>
                                 </Grid>

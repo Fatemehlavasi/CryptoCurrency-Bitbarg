@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import { Typography , Grid} from '@mui/material';
 const HeaderMobile = () => {
     return ( 
-     <Toolbar sx={{ justifyContent: "space-between" ,px:'0'}}>
+     <Toolbar sx={{ justifyContent: "space-between" ,px:'0'  }}>
         <Grid sx={{width:'118px',height:'48px' }} > <img src={Logo} alt="Logo" sx={{width:'100%'}} />; </Grid>
         <Stack direction="row" spacing={2}>
           {/* <IconButton color="secondary" > */}

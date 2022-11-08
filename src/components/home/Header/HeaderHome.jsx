@@ -8,10 +8,7 @@ const HeaderHome = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <Grid
-      position="static"
-      sx={{bgcolor:"#fff" }}
-    >
+   
       <Container>
           {isMobile ? (
             <HeaderMobile/>
@@ -19,7 +16,7 @@ const HeaderHome = () => {
             <Headerdesktop/>
           )}
       </Container>
-    </Grid>
+    
   );
 };
 

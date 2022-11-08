@@ -37,12 +37,12 @@ const CurrencyDigi = () => {
     // const [search, setSearch] = useState()
 
     return (
-        <Grid container width={"100%"} display={"flex"} flexWrap={"wrap"} justifyContent={'center'} alignItems={'center'} borderRadius={8}  mt={5} p={5}
-            sx={{ backgroundImage: `url(${image.src}  "no-repeat" "center" )` , flexDirection:{ xs: "column", md: "row" }}}
+        <Grid container  display={"flex"} flexWrap={"wrap"} justifyContent={'center'} alignItems={'center'} borderRadius={8}  mt={5} 
+            sx={{flexDirection:{ xs: "column", md: "row" } , width:{xs: "100%"}}}
         >
                 <DesDigital setStatus={setStatus} status={status}  />
-            <Grid  borderRadius={"3px"} sx={{ width:{ lg: "75%", md: "100%" }}} >
-                <Table width={"80%"} sx={{ minWidth: " 75% " }} >
+            {/* <Grid   borderRadius={"3px"} sx={{ width:{  md: "100%" }}} bgcolor="red" > */}
+                <Table  sx={{ width:{ sm:"100%" , xs:"70%" } }} >
                     {isDesktop ?
                         <TableHead bgcolor={"#fafafa"}>
                             <TableRow hover role="checkbox" tabIndex={-1}>
@@ -64,7 +64,7 @@ const CurrencyDigi = () => {
                     </TableBody>
                 </Table>
             </Grid>
-        </Grid>
+        // </Grid>
     )
 }
 

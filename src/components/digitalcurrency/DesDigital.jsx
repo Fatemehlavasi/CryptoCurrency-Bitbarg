@@ -22,10 +22,10 @@ const DesDigital = ({ setStatus, status, setSearch }) => {
     return (
 
         <>
-            <Grid item width={"80%"} pb={3} >
+            <Grid item width={"100%"} pb={3}  >
                 <Typography sx={{ fontWeight: "700" }} >{"قیمت لحظه‌ای"}</Typography>
             </Grid>
-            <Grid item display={"flex"} justifyContent={'space-between'} sx={{ flexDirection: { xs: "column", md: "row" }, width: { lg: "75%", md: "100%", xs: "100%" } }}  >
+            <Grid item display={"flex"} justifyContent={'space-between'} sx={{ flexDirection: { xs: "column", md: "row" }, width: { xs: "100%" } }}  >
                 <Grid item display={'flex'} sx={{ border: "1px solid #8888 ", borderRadius: "10px", mb: { xs: "10px" } }} xs={12} md={3}  >
                     <IconButton type="button" aria-label="search">
                         <SearchIcon />
@@ -37,11 +37,11 @@ const DesDigital = ({ setStatus, status, setSearch }) => {
                     />
 
                 </Grid>
-                <Grid item justifyContent={'space-evenly'} display={"flex"} sx={{ width: { lg: "75%", md: "100%", xs: "100%" } }} >
+                <Grid item justifyContent={'space-evenly'} display={"flex"} sx={{ width: { lg: "75%",  xs: "100%" } }} >
 
                     <Grid item display={"flex"} justifyContent={'center'} alignItems={"center"} >
                         <Button variant='outlined' startIcon={<StarOutlineRoundedIcon />} sx={{ backgroundColor: "#fafafa", color: "#000", border: '1px solid #e0e0e0 ', minWidth: '180px', height: "50px" }} onClick={() => (setStatus(!status))} >
-                            {status ? <Button sx={{ color: "#000", minWidth: '140px' }}  >نشان شده ها</Button> : <Button sx={{ color: "blue", minWidth: '140px' }}  >نشان شده ها</Button>}
+                            {status ? <Button sx={{ color: "#000", width: { md: "272px%", xs: "140px" } }}  >نشان شده ها</Button> : <Button sx={{ color: "blue",width: { md: "272px%", xs: "140px" } }}  >نشان شده ها</Button>}
                         </Button>
                     </Grid>
                     <Grid item sx={{ minWidth: { md: '140px', xs: "100px" }, display: { xs: "none", sm: "block" } }}>
@@ -61,7 +61,7 @@ const DesDigital = ({ setStatus, status, setSearch }) => {
                             renderInput={(params) => <TextField {...params} label="قیمت بر اساس " />}
                         />
                     </Grid>
-                    <Grid item border={1} display={"flex"} justifyContent={'center'} alignItems={"center"} sx={{ minWidth: { md: '160px', xs: "100px" } }}>
+                    <Grid item border={1} display={"flex"} justifyContent={'center'} alignItems={"center"} sx={{ minWidth: { md: '227px', xs: "100px" } }}>
                         <Button onClick={() => setUnit(true)} sx={{ backgroundColor: "#fafafa", color: "#000", width: 80 }}>
                             {"تومان"}
                         </Button>
