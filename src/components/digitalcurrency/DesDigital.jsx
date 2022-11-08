@@ -25,52 +25,54 @@ const DesDigital = ({ setStatus, status, setSearch }) => {
             <Grid item width={"80%"} pb={3} >
                 <Typography sx={{ fontWeight: "700" }} >{"قیمت لحظه‌ای"}</Typography>
             </Grid>
-            <Grid item display={"flex"} justifyContent={'space-between'}  pb={3} sx={{flexDirection:{ xs: "column", md: "row" }, width:{ lg: "75%", md: "100%" }}}  >
-                <Grid item display={'flex'} sx={{ border: "1px solid #8888 ", borderRadius: "10px" }} xs={12} md={3} >
+            <Grid item display={"flex"} justifyContent={'space-between'} sx={{ flexDirection: { xs: "column", md: "row" }, width: { lg: "75%", md: "100%", xs: "100%" } }}  >
+                <Grid item display={'flex'} sx={{ border: "1px solid #8888 ", borderRadius: "10px", mb: { xs: "10px" } }} xs={12} md={3}  >
                     <IconButton type="button" aria-label="search">
                         <SearchIcon />
                     </IconButton>
                     <InputBase sx={{ flex: 1 }}
                         placeholder="جستجو"
                         inputProps={{ 'aria-label': 'search google maps' }}
-                        // onChange={handleSearch}
+                    // onChange={handleSearch}
                     />
+
                 </Grid>
-                <Grid item  justifyContent={'space-evenly'} display={"flex"}  sx={{ width:{ lg: "75%", md: "100%" , xs:"100%" } , bgcolor:"red" }}>
-                <Grid item display={"flex"} justifyContent={'center'} alignItems={"center"} xs={12} md={2} >
-                    <Button variant='outlined'  startIcon={<StarOutlineRoundedIcon />} sx={{ backgroundColor: "#fafafa", color: "#000", border: '1px solid #e0e0e0 ' , minWidth: '180px' , height:"50px" }} xs={5} md={2} onClick={() => (setStatus(!status))} >
-                         {status ?  <Button  sx={{color: "#000",minWidth: '140px'  }}  >نشان شده ها</Button> :  <Button  sx={{color: "blue",minWidth: '140px'  }}  >نشان شده ها</Button>}
-                    </Button>
-                </Grid>
-                <Grid item sx={{ minWidth: {md:'140px' , xs:"100px" }}}>
-                    <Autocomplete xs={3}
-                        dir="rtl"
-                        value={value}
-                        onChange={(event, newValue) => {
-                            setValue(newValue);
-                        }}
-                        inputValue={inputValue}
-                        onInputChange={(event, newInputValue) => {
-                            setInputValue(newInputValue);
-                        }}
-                        id="controllable-states-demo"
-                        options={options}
-                        sx={{ width: 200 }}
-                        renderInput={(params) => <TextField {...params} label="قیمت بر اساس " />}
-                    />
-                </Grid>
-                <Grid item border={1} display={"flex"} justifyContent={'center'} alignItems={"center"} xs={6} md={2}>
-                    <Button onClick={() => setUnit(true)} sx={{ backgroundColor: "#fafafa", color: "#000", width: 100 }}>
-                        {"تومان"}
-                    </Button>
-                    <Button onClick={() => setUnit(false)} sx={{ backgroundColor: "#fafafa", color: "#000", width: 100 }}>
-                        {"تتر"}
-                    </Button>
-                    
-                </Grid>
+                <Grid item justifyContent={'space-evenly'} display={"flex"} sx={{ width: { lg: "75%", md: "100%", xs: "100%" } }} >
+
+                    <Grid item display={"flex"} justifyContent={'center'} alignItems={"center"} >
+                        <Button variant='outlined' startIcon={<StarOutlineRoundedIcon />} sx={{ backgroundColor: "#fafafa", color: "#000", border: '1px solid #e0e0e0 ', minWidth: '180px', height: "50px" }} onClick={() => (setStatus(!status))} >
+                            {status ? <Button sx={{ color: "#000", minWidth: '140px' }}  >نشان شده ها</Button> : <Button sx={{ color: "blue", minWidth: '140px' }}  >نشان شده ها</Button>}
+                        </Button>
+                    </Grid>
+                    <Grid item sx={{ minWidth: { md: '140px', xs: "100px" }, display: { xs: "none", sm: "block" } }}>
+                        <Autocomplete xs={3}
+                            dir="rtl"
+                            value={value}
+                            onChange={(event, newValue) => {
+                                setValue(newValue);
+                            }}
+                            inputValue={inputValue}
+                            onInputChange={(event, newInputValue) => {
+                                setInputValue(newInputValue);
+                            }}
+                            id="controllable-states-demo"
+                            options={options}
+                            sx={{ width: 200 }}
+                            renderInput={(params) => <TextField {...params} label="قیمت بر اساس " />}
+                        />
+                    </Grid>
+                    <Grid item border={1} display={"flex"} justifyContent={'center'} alignItems={"center"} sx={{ minWidth: { md: '160px', xs: "100px" } }}>
+                        <Button onClick={() => setUnit(true)} sx={{ backgroundColor: "#fafafa", color: "#000", width: 80 }}>
+                            {"تومان"}
+                        </Button>
+                        <Button onClick={() => setUnit(false)} sx={{ backgroundColor: "#fafafa", color: "#000", width: 80 }}>
+                            {"تتر"}
+                        </Button>
+
+                    </Grid>
                 </Grid>
 
-                
+
             </Grid>
         </>
     )
