@@ -9,15 +9,15 @@ import IconButton from "@mui/material/IconButton";
 const MobileCurrencyDigi = ({ coin, handelCheck }) => {
     return (
 
-        <TableRow hover role="checkbox" >
+<TableRow hover role="checkbox" >
             <TableCell sx={{ textAlign: "center" }}>
                 <IconButton onClick={() => handelCheck(coin.uuid)}>
                     <h3>{coin.lVolume ? <StarIcon sx={{ Color: "red" }} /> : <StarBorderIcon />}</h3>
                 </IconButton>
             </TableCell>
 
-            <TableCell sx={{ textAlign: "center" }} paddingLeft={0}>
-                {/* <Grid display={"flex"} alignItems={'center'} justifyContent={"flex-end"} >
+            <TableCell sx={{ textAlign: "center"   , display:{xs: "none" , sm:"block"} }} paddingLeft={0} >
+                 <Grid display={"flex"} alignItems={'center'} justifyContent={"flex-end"} >
                     <Typography
                         variant="subtitle1"
                         color={"rgba(0, 0, 0, 0.6)"}
@@ -34,16 +34,17 @@ const MobileCurrencyDigi = ({ coin, handelCheck }) => {
                         px={1}
                     >
                     </Typography>
-                </Grid> */}
-                {/* <Grid display={"flex"} justifyContent={"flex-end"} >
+                </Grid> 
+                <Grid display={"flex"} justifyContent={"flex-end"} >
                     <Typography
                         variant="subtitle1"
                         color={"rgba(0, 0, 0, 0.6)"}
                         px={1}
+                       
                     >
-                        {'ارزش بازار'}
+                        {'فروش '}
                     </Typography>
-                    <Typography variant="subtitle1">
+                    <Typography variant="subtitle1" >
                         {coin.marketCap}
                     </Typography>
                     <Typography
@@ -54,10 +55,9 @@ const MobileCurrencyDigi = ({ coin, handelCheck }) => {
                         {"USDT"}
                     </Typography>
 
-
-                </Grid> */}
+                </Grid> 
             </TableCell>
-            <TableCell sx={{ textAlign: "left" }}>
+            <TableCell sx={{ textAlign: "left"  }}>
                 <Grid display={"flex"} justifyContent={"flex-end"}>
                     <Grid item>
                         <Typography variant="subtitle1" marginBottom={1}>
@@ -84,7 +84,7 @@ const MobileCurrencyDigi = ({ coin, handelCheck }) => {
                                 variant="subtitle1"
                                 color={"rgba(0, 0, 0, 0.6)"}
                                 sx={{
-                                    backgroundColor: "secondary.main",
+                                    backgroundColor: "#909090",
                                     width: "15px",
                                     textAlign: "center",
                                     marginRight: 1,
@@ -106,6 +106,8 @@ const MobileCurrencyDigi = ({ coin, handelCheck }) => {
                 </Grid>
             </TableCell>
         </TableRow>
+
+      
     );
 }
 
