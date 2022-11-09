@@ -1,14 +1,11 @@
-
 import React from 'react'
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import DesDigital from './DesDigital';
 import { Grid, IconButton, Typography, Button } from "@mui/material"
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
-import { maxWidth } from '@mui/system';
-import { red } from '@mui/material/colors';
+
 const TableِPricDigi = ({ coin, handelCheck, unit }) => {
 
 
@@ -19,15 +16,15 @@ const TableِPricDigi = ({ coin, handelCheck, unit }) => {
                 key={coin.uuid}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 }, textAlign: "center" }}
             >
-                <TableCell sx={{ textAlign: "center" }} width={"20%"}>
+                <TableCell sx={{ textAlign: "center" }}>
                     <IconButton onClick={() => handelCheck(coin.uuid)}>
-                        <h3>{coin.lVolume ? <StarIcon /> : <StarBorderIcon />}</h3>
+                        <h3>{coin.lowVolume ?  <StarIcon /> : <StarBorderIcon />}</h3>
                     </IconButton>
                 </TableCell>
                 <TableCell sx={{ textAlign: "center" }}>{`${coin.change}%`}</TableCell>
                 <TableCell sx={{ textAlign: "center" }}>{"nemodar"}</TableCell>
                 <TableCell sx={{ textAlign: "center" }}>
-                    {unit === 'true'
+                    {unit === 'Toman'
                         ? Math.ceil(coin.marketCap / 34000)
                         : Math.ceil(coin.marketCap)}
                     {unit === 'Toman' ? "تومان" : <CurrencyRupeeIcon />}

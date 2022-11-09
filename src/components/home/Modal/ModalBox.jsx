@@ -64,7 +64,7 @@ const ModalBox = ({ open, setOpen, dataCoins, setDataForm }) => {
                             />
                         </Grid>
                         <Grid item xs={12} marginTop={2}>
-                            <Grid sx={{  height: '100%' , maxHeight: '500px', overflowY: 'auto' }}>
+                            <Grid sx={{  height: '100%' , maxHeight: '400px', overflowY: 'auto' }}>
                                 <List>
                                     {
                                         dataCoins.map((coin) => (

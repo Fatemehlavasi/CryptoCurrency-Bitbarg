@@ -2,74 +2,54 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
+import CurrencyLiraIcon from '@mui/icons-material/CurrencyLira';
 import IconButton from "@mui/material/IconButton";
-
-const MobileCurrencyDigi = ({ coin, handelCheck }) => {
+import Divider from '@mui/material/Divider'
+const MobileCurrencyDigi = ({ coin, handelCheck, unit }) => {
     return (
+        <>
+            <Grid width={'100%'} height={'100%'} alignItems={'center'} justifyContent={'space-between'} display={'flex'} my={1}>
+                <Grid>
+                    <IconButton onClick={() => handelCheck(coin.uuid)} sx={{ "&.MuiButtonBase-root": { padding: 0 } }}>
+                        <h3>{coin.lVolume ? <StarIcon sx={{ Color: "red" }} /> : <StarBorderIcon />}</h3>
+                    </IconButton>
+                </Grid>
+                <Grid>
+                    <Grid display={"flex"} alignItems={'center'} justifyContent={"flex-end"} >
+                        <Typography
+                            variant="subtitle1"
+                            color={"rgba(0, 0, 0, 0.6)"}
+                            px={1}
+                        >
+                            {'خرید'}
+                        </Typography>
+                        <Typography variant="subtitle1">
+                            {unit === 'Toman'
+                                ? Math.ceil(coin.price * 34000)
+                                : Math.ceil(coin.price)}
+                        </Typography>
+                        <Typography
+                            variant="subtitle1"
+                            color={"rgba(0, 0, 0, 0.6)"}
+                            px={1}
+                        >
+                            {unit === 'Toman' ? "تومان" : <CurrencyLiraIcon/>}
+                        </Typography>
+                    </Grid>
 
-<TableRow hover role="checkbox" >
-            <TableCell sx={{ textAlign: "center" }}>
-                <IconButton onClick={() => handelCheck(coin.uuid)}>
-                    <h3>{coin.lVolume ? <StarIcon sx={{ Color: "red" }} /> : <StarBorderIcon />}</h3>
-                </IconButton>
-            </TableCell>
-
-            <TableCell sx={{ textAlign: "center"   , display:{xs: "none" , sm:"block"} }} paddingLeft={0} >
-                 <Grid display={"flex"} alignItems={'center'} justifyContent={"flex-end"} >
-                    <Typography
-                        variant="subtitle1"
-                        color={"rgba(0, 0, 0, 0.6)"}
-                        px={1}
-                    >
-                        {'خرید'}
-                    </Typography>
-                    <Typography variant="subtitle1">
-                        {coin.price}
-                    </Typography>
-                    <Typography
-                        variant="subtitle1"
-                        color={"rgba(0, 0, 0, 0.6)"}
-                        px={1}
-                    >
-                    </Typography>
-                </Grid> 
-                <Grid display={"flex"} justifyContent={"flex-end"} >
-                    <Typography
-                        variant="subtitle1"
-                        color={"rgba(0, 0, 0, 0.6)"}
-                        px={1}
-                       
-                    >
-                        {'فروش '}
-                    </Typography>
-                    <Typography variant="subtitle1" >
-                        {coin.marketCap}
-                    </Typography>
-                    <Typography
-                        variant="subtitle1"
-                        color={"rgba(0, 0, 0, 0.6)"}
-                        px={1}
-                    >
-                        {"USDT"}
-                    </Typography>
-
-                </Grid> 
-            </TableCell>
-            <TableCell sx={{ textAlign: "left"  }}>
-                <Grid display={"flex"} justifyContent={"flex-end"}>
+                </Grid>
+                <Grid display={"flex"} justifyContent={'flex-start'}>
                     <Grid item>
-                        <Typography variant="subtitle1" marginBottom={1}>
+                        <Typography variant="subtitle1" marginBottom={1} sx={{ direction: "ltr" }}>
                             {coin?.name}
                         </Typography>
                         <Grid display={"flex"}>
                             <Typography
                                 variant="subtitle1"
+                                //color={"rgba(0, 0, 0, 0.6)"}
                                 sx={{
                                     direction: "ltr",
                                     marginLeft: 1
-
                                 }}
                             >
                                 {`${coin.change}%`}
@@ -93,7 +73,6 @@ const MobileCurrencyDigi = ({ coin, handelCheck }) => {
                             >
                                 {coin?.rank}
                             </Typography>
-
                         </Grid>
                     </Grid>
                     <Grid item marginRight={1}>
@@ -104,10 +83,9 @@ const MobileCurrencyDigi = ({ coin, handelCheck }) => {
                         />
                     </Grid>
                 </Grid>
-            </TableCell>
-        </TableRow>
-
-      
+            </Grid>
+            <Divider variant="fullWidth" />
+        </>
     );
 }
 

@@ -16,29 +16,20 @@ const CurrencyDigi = () => {
     const { dataCoins, setDataCoins } = useContext(DataContext)
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
-    const [unit, setUnit] = useState(true)
+    const [unit, setUnit] = useState('Toman')
     const [status, setStatus] = useState(false)
-    const [filtered, setFiltered] = useState([]);
-    const handleStatus = () => {
-        if (status) {
-            setFiltered(dataCoins.filter((coin) => coin.lVolume === true));
-        } else {
-            setFiltered(dataCoins);
-        }
-    };
-
-   
-
+    const [filtered, setFiltered] = useState(dataCoins);
     const handelCheck = uuid => {
-        setDataCoins(dataCoins.map(coin => coin.uuid === uuid ? { ...coin, lVolume: !coin.lVolume } : coin))
+        setDataCoins(dataCoins.map(coin => coin.uuid === uuid ? { ...coin, lowVolume : !coin.lowVolume } : coin))
     }
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState('');
+   
 
     return (
         <Grid container  display={"flex"} flexWrap={"wrap"} justifyContent={'center'} alignItems={'center'} borderRadius={8}  mt={5} 
             sx={{flexDirection:{ xs: "column", md: "row" } , width:{xs: "100%"}}}
         >
-                <DesDigital setStatus={setStatus} status={status}  setSearch={setSearch} unit={unit} setUnit={setUnit} handleStatus={handleStatus}/>
+                <DesDigital setStatus={setStatus} status={status}  setSearch={setSearch} unit={unit} setUnit={setUnit}  filtered={filtered} setFiltered={setFiltered}/>
             {/* <Grid   borderRadius={"3px"} sx={{ width:{  md: "100%" }}} bgcolor="red" > */}
                 <Table  sx={{ width:{ sm:"100%" , xs:"70%" } }} >
                     {isDesktop ?
@@ -54,11 +45,11 @@ const CurrencyDigi = () => {
                         </TableHead> : null}
 
                     <TableBody>
-                        {dataCoins.filter(item => item.name.toUpperCase().includes(search.toUpperCase())).map((coin) => (
+                        {filtered.filter(item => item.name.toUpperCase().includes(search.toUpperCase())).map((coin) => (
                          
                             (isDesktop ?
                                 <TableِPricDigi coin={coin} handelCheck={handelCheck} unit={unit}/> :
-                                <MobileCurrencyDigi handelCheck={handelCheck} coin={coin} />)
+                                <MobileCurrencyDigi handelCheck={handelCheck} coin={coin} unit={unit} />)
                         ))}
                     </TableBody>
                 </Table>

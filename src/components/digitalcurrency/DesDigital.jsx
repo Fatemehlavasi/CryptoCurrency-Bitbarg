@@ -1,22 +1,15 @@
 import React, { useState } from 'react'
-import Paper from '@mui/material/Paper';
-import Search from '@mui/icons-material/Search';
 import SearchIcon from '@mui/icons-material/Search';
-import Autocomplete from '@mui/material/Autocomplete';
 import InputBase from '@mui/material/InputBase';
-import TextField from '@mui/material/TextField';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import { Grid, IconButton, Typography, Button } from "@mui/material"
+import { Grid, IconButton, Typography, Button, InputLabel } from "@mui/material"
 import StarOutlineRoundedIcon from "@mui/icons-material/StarOutlineRounded";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import SortFilterPrice from './SortFilterPrice';
+import { useEffect } from 'react';
+import { useCallback } from 'react';
 
-const options = [' کمترین قیمت ', 'بیشترین قیمت'];
-
-const DesDigital = ({ status, setSearch, unit , setUnit ,  }) => {
-    const [value, setValue] = React.useState(options[0]);
-    const [inputValue, setInputValue] = React.useState('');
-
+const DesDigital = ({ status, setSearch, unit, setUnit, setFiltered, filtered }) => {
     const handleSearch = (e) => {
         setSearch(e.target.value.toLowerCase())
     }
@@ -24,14 +17,34 @@ const DesDigital = ({ status, setSearch, unit , setUnit ,  }) => {
     const handleChangeButton = (e) => {
         setUnit(e.target.value);
     };
+    // filter
+    const [sortPrice, setSortPrice] = useState('')
+    console.log(sortPrice)
+    const handleDescendingPrice = useCallback(() => {
+        const coinData = [...filtered]
+        console.log(coinData)
+        if (sortPrice === 'ascending') {
+            setFiltered(coinData.sort((a, b) => a.price - b.price));
+        } else if (sortPrice === 'descending') {
+            setFiltered(coinData.sort((a, b) => b.price - a.price));
+
+        }
+    }, [sortPrice ])
+
+
+    useEffect(() => {
+        handleDescendingPrice();
+    }, [sortPrice ]);
+
     return (
 
         <>
             <Grid item width={"100%"} pb={3}  >
                 <Typography sx={{ fontWeight: "700" }} >{"قیمت لحظه‌ای"}</Typography>
             </Grid>
-            <Grid item display={"flex"} justifyContent={'space-between'} sx={{ flexDirection: { xs: "column", md: "row" }, width: { xs: "100%" } }}  >
-                <Grid item display={'flex'} sx={{ border: "1px solid #8888 ", borderRadius: "10px", mb: { xs: "10px" } }} xs={12} md={3}  >
+            <Grid item display={"flex"} justifyContent={'space-between'} alignItems={"center"} sx={{ flexDirection: { xs: "column", md: "row" }, width: { xs: "100%" } , m:"10px"}} 
+             >
+                <Grid item  display={'flex'} alignItems={"center"} sx={{ border: "1px solid #8888 ", borderRadius: "10px", mb: { xs: "10px" } }} xs={12} md={3}  >
                     <IconButton type="button" aria-label="search">
                         <SearchIcon />
                     </IconButton>
@@ -42,30 +55,17 @@ const DesDigital = ({ status, setSearch, unit , setUnit ,  }) => {
                     />
 
                 </Grid>
-                <Grid item justifyContent={'space-evenly'} display={"flex"} sx={{ width: { lg: "75%", xs: "100%" } }} >
+                <Grid item justifyContent={'space-evenly'} display={"flex"} sx={{ width: { lg: "75%", xs: "100%" }, flexDirection:{sm:'row' , xs:'column'} }} >
 
-                    <Grid item display={"flex"} justifyContent={'center'} alignItems={"center"} >
-                        <Button variant='outlined' startIcon={<StarOutlineRoundedIcon />} sx={{ backgroundColor: "#fafafa", color: "#000", border: '1px solid #e0e0e0 ',  height: "50px" , width: { md: "272px%", xs: "100%" } }}  >
+                    <Grid item display={"flex"} justifyContent={'center'} alignItems={"center"} bgcolor={"#000"} >
+                        <Button variant='outlined' startIcon={<StarOutlineRoundedIcon />} sx={{ backgroundColor: "#fafafa", color: "#000", border: '1px solid #e0e0e0 ', height: "50px", width: { md: "272px%", xs: "100%" } }}  >
                             {status ? <Button sx={{ color: "#000", width: { md: "272px%", xs: "140px" } }}  >نشان شده ها</Button> : <Button sx={{ color: "blue", width: { md: "272px%", xs: "140px" } }}  >نشان شده ها</Button>}
                         </Button>
                     </Grid>
-                    <Grid item sx={{ minWidth: { md: '140px', xs: "100px" }, display: { xs: "none", sm: "block" } }}>
-                        <Autocomplete xs={3}
-                            value={value}
-                            onChange={(event, newValue) => {
-                                setValue(newValue);
-                            }}
-                            inputValue={inputValue}
-                            onInputChange={(event, newInputValue) => {
-                                setInputValue(newInputValue);
-                            }}
-                            id="controllable-states-demo"
-                            options={options}
-                            sx={{ width: 200 }}
-                            renderInput={(params) => <TextField {...params} label="قیمت بر اساس " />}
-                        />
+                    <Grid item sx={{ minWidth: { md: '140px', xs: "100px" } }}>
+                        <SortFilterPrice sortPrice={sortPrice} setSortPrice={setSortPrice} />
                     </Grid>
-                    <Grid item border={1} display={"flex"} justifyContent={'center'} alignItems={"center"} sx={{ minWidth: { md: '300px', xs: "100px" } , display:{xs: "none" , sm:"block"} }}>                       
+                    <Grid item border={1} display={"flex"} justifyContent={'center'} alignItems={"center"} sx={{ minWidth: { md: '300px', xs: "100px" } }}>
                         <ToggleButtonGroup
                             fullWidth={true}
                             color="primary"
@@ -92,7 +92,6 @@ const DesDigital = ({ status, setSearch, unit , setUnit ,  }) => {
 
                     </Grid>
                 </Grid>
-
 
             </Grid>
         </>
