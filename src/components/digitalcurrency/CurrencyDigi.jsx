@@ -19,10 +19,11 @@ const CurrencyDigi = () => {
     const [unit, setUnit] = useState('Toman')
     const [status, setStatus] = useState(false)
     const [filtered, setFiltered] = useState(dataCoins);
+    const [search, setSearch] = useState('');
     const handelCheck = uuid => {
         setDataCoins(dataCoins.map(coin => coin.uuid === uuid ? { ...coin, lowVolume : !coin.lowVolume } : coin))
     }
-    const [search, setSearch] = useState('');
+   
    
 
     return (

@@ -8,11 +8,10 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import SortFilterPrice from './SortFilterPrice';
 import { useEffect } from 'react';
 import { useCallback } from 'react';
+import Search from '../search/Search';
 
 const DesDigital = ({ status, setSearch, unit, setUnit, setFiltered, filtered }) => {
-    const handleSearch = (e) => {
-        setSearch(e.target.value.toLowerCase())
-    }
+  
 
     const handleChangeButton = (e) => {
         setUnit(e.target.value);
@@ -44,16 +43,8 @@ const DesDigital = ({ status, setSearch, unit, setUnit, setFiltered, filtered })
             </Grid>
             <Grid item display={"flex"} justifyContent={'space-between'} alignItems={"center"} sx={{ flexDirection: { xs: "column", md: "row" }, width: { xs: "100%" } , m:"10px"}} 
              >
-                <Grid item  display={'flex'} alignItems={"center"} sx={{ border: "1px solid #8888 ", borderRadius: "10px", mb: { xs: "10px" } }} xs={12} md={3}  >
-                    <IconButton type="button" aria-label="search">
-                        <SearchIcon />
-                    </IconButton>
-                    <InputBase sx={{ flex: 1 }}
-                        placeholder="جستجو"
-                        inputProps={{ 'aria-label': 'search google maps' }}
-                        onChange={handleSearch}
-                    />
-
+                <Grid item  display={'flex'} alignItems={"center"} sx={{ borderRadius: "10px", mb: { xs: "10px" } }} xs={12} md={3}  >
+                    <Search setSearch={setSearch}/>
                 </Grid>
                 <Grid item justifyContent={'space-evenly'} display={"flex"} sx={{ width: { lg: "75%", xs: "100%" }, flexDirection:{sm:'row' , xs:'column'} }} >
 
