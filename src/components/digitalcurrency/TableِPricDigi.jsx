@@ -21,7 +21,7 @@ const TableِPricDigi = ({ coin, handelCheck, unit }) => {
                         <h3>{coin.lowVolume ?  <StarIcon /> : <StarBorderIcon />}</h3>
                     </IconButton>
                 </TableCell>
-                <TableCell sx={{ textAlign: "center" }}>{`${coin.change}%`}</TableCell>
+                <TableCell sx={{ textAlign: "center" , direction:"rtl" }}>{`${coin.change}%`}</TableCell>
                 <TableCell sx={{ textAlign: "center" }}>{"nemodar"}</TableCell>
                 <TableCell sx={{ textAlign: "center" }}>
                     {unit === 'Toman'
