@@ -16,7 +16,7 @@ export const Theme = createTheme ({
                   lineheight: 1.75,
                 //   transition:" background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
                 '&:hover': {
-                    backgroundColor: 'blue',
+                  backgroundColor: 'rgb(66, 133, 242)',
                    
           
                    }
@@ -81,10 +81,6 @@ export const Theme = createTheme ({
         padding:'0'
        
       },
-    
-        mobi:{
-            fontSize:50
-        }
       }  
         
 

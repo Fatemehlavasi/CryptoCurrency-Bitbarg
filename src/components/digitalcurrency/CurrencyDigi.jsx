@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { Grid, useTheme, useMediaQuery, } from "@mui/material"
 import { DataContext } from '../../contex/contex'
-import image from "../../assets/images/backbitbarg.png"
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -30,7 +29,7 @@ const CurrencyDigi = () => {
         <Grid container  display={"flex"} flexWrap={"wrap"} justifyContent={'center'} alignItems={'center'} borderRadius={8}  mt={5} 
             sx={{flexDirection:{ xs: "column", md: "row" } , width:{xs: "100%"}}}
         >
-                <DesDigital setStatus={setStatus} status={status}  setSearch={setSearch} unit={unit} setUnit={setUnit}  filtered={filtered} setFiltered={setFiltered}/>
+                <DesDigital dataCoins={dataCoins} setStatus={setStatus} status={status}  setSearch={setSearch} unit={unit} setUnit={setUnit}  filtered={filtered} setFiltered={setFiltered}/>
             {/* <Grid   borderRadius={"3px"} sx={{ width:{  md: "100%" }}} bgcolor="red" > */}
                 <Table  sx={{ width:{ sm:"100%" , xs:"70%" } }} >
                     {isDesktop ?
@@ -41,7 +40,7 @@ const CurrencyDigi = () => {
                                 <TableCell sx={{ textAlign: "center" }}>نمودار </TableCell>
                                 <TableCell sx={{ textAlign: "center" }}>قیمت فروش </TableCell>
                                 <TableCell sx={{ textAlign: "center" }}>قیمت خرید </TableCell>
-                                <TableCell sx={{ textAlign: "left" }}> ارز دیجیتال  </TableCell>
+                                <TableCell sx={{ textAlign: "center" }}> ارز دیجیتال  </TableCell>
                             </TableRow>
                         </TableHead> : null}
 

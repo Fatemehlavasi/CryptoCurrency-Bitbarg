@@ -11,7 +11,7 @@ const MobileCurrencyDigi = ({ coin, handelCheck, unit }) => {
             <Grid width={'100%'} height={'100%'} alignItems={'center'} justifyContent={'space-between'} display={'flex'} my={1}>
                 <Grid>
                     <IconButton onClick={() => handelCheck(coin.uuid)} sx={{ "&.MuiButtonBase-root": { padding: 0 } }}>
-                        <h3>{coin.lVolume ? <StarIcon sx={{ Color: "red" }} /> : <StarBorderIcon />}</h3>
+                        <h3>{coin.lVolume ? <StarIcon  /> : <StarBorderIcon />}</h3>
                     </IconButton>
                 </Grid>
                 <Grid>
