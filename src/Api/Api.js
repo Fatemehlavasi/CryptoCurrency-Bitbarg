@@ -13,3 +13,8 @@ export const options = axios.create(
           }
     }
 ) 
+
+
+ export const handleData = () => {
+   return options('/coins').then(res => res.data.data.coins)
+}

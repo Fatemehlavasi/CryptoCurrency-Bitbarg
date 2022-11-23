@@ -7,8 +7,6 @@ const Search = ({ setSearch }) => {
         setSearch(e.target.value)
     }
     return (
- 
-
 <Grid 
         item
         display={'flex'}

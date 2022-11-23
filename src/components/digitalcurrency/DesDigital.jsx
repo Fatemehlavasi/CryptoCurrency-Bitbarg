@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+
+import React, { useState } from 'react';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { Grid, IconButton, Typography, Button, InputLabel } from "@mui/material"
-import StarOutlineRoundedIcon from "@mui/icons-material/StarOutlineRounded";
+
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import SortFilterPrice from './SortFilterPrice';
@@ -10,8 +13,10 @@ import { useEffect } from 'react';
 import { useCallback } from 'react';
 import Search from '../search/Search';
 import { Link } from 'react-router-dom';
+import StarOutlineRoundedIcon from "@mui/icons-material/StarOutlineRounded";
+import Stack from '@mui/material/Stack';
 
-const DesDigital = ({ status, setSearch, unit, setUnit, setFiltered, filtered, dataCoins }) => {
+const DesDigital = ({ status, setSearch, unit, setUnit, setFiltered, filtered, dataCoins , setStatus , mark ,  setMark }) => {
 
 
     const handleChangeButton = (e) => {
@@ -99,11 +104,19 @@ const DesDigital = ({ status, setSearch, unit, setUnit, setFiltered, filtered, d
 
                 </Grid>
 
-                <Grid item display={"flex"} justifyContent={'center'} alignItems={"center"} >
-                    <Button variant='outlined' startIcon={<StarOutlineRoundedIcon />} sx={{ backgroundColor: "#fafafa", color: "#000", border: '1px solid #e0e0e0 ', height: "45px", width: { md: "272px%", xs: "80" } }}  >
+                {/* <Grid item display={"flex"} justifyContent={'center'} alignItems={"center"} >
+                    <Button  variant='outlined' startIcon={<StarOutlineRoundedIcon />} sx={{ backgroundColor: "#fafafa", color: "#000", border: '1px solid #e0e0e0 ', height: "45px", width: { md: "272px%", xs: "80" } }}  >
                         {status ? <Button sx={{ color: "#000", width: { md: "272px%", xs: "140px" } }}  >نشان شده ها</Button> : <Button sx={{ color: "blue", width: { md: "272px%", xs: "140px" } }}  >نشان شده ها</Button>}
                     </Button>
-                </Grid>
+                </Grid> */}
+
+<Grid container item sx={{ minWidth: 120 }} md={2}>
+        <Stack direction="row">
+          <Button onClick={()=>setMark(!mark)}  sx={{width:'auto',height:'50px',padding:2}} variant="outlined" startIcon={<StarOutlineRoundedIcon />}>
+            <Typography pr={'7px'} color={"black"} variant={'h2'}>نشان شده ها</Typography>
+          </Button>
+        </Stack>
+      </Grid>
             </Grid>
 
             {/* </Grid> */}
